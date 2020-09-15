@@ -1,0 +1,77 @@
+form-dynamic-section  {
+	display: flex;
+	border: 1px solid #e3e3e3;
+	/* box-shadow: 0px 0px 6px #44444478; */
+	padding: 3px 10px 2px 9px;
+	border-radius: 5px;
+	margin-bottom: 40px;
+	background: #eee3;
+}
+
+.dyn-field {
+	/* border: 1px solid; */
+	flex: 1;
+	padding: 5px;
+	margin: 4px 0 4px 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.dyn-form-section {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.section-title {
+	flex: 1;
+}
+
+.dyn-form-section form {
+	flex: 3;
+}
+
+.dyn-field.invalid {
+	background: #ff000021;
+	color: #ab6e6e;
+	border-radius: 5px;
+}
+
+.dyn-field input {
+	border: .5px solid #eee;
+	height: 40px;
+	padding: 5px 5px 5px 5px;
+	color: #5f5f5f;
+	font-family: arial;
+	border-radius: 5px;
+}
+
+.dyn-field label {
+	display: flex;
+	align-items: center;
+}
+
+.dyn-form-section {
+	border: 1px solid transparent;
+}
+
+form-dynamic-section.invalid {
+	border: .5px solid #72313963;
+}
+
+span.red-asterisk {
+	text-transform: revert;
+}
+
+sup.red-asterisk {
+	color: red;
+	position: relative;
+	bottom: 3px;
+	font-size: 10px;
+	margin-left: 2px;
+}
+
+textarea {
+	flex: 1;
+}

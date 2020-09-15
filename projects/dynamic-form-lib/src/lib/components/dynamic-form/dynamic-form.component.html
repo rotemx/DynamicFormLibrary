@@ -1,0 +1,25 @@
+<div class="dyn-form">
+	<h2>{{form.title}}</h2>
+	
+<!--	<ng-container *ngIf="comp">-->
+<!--		<ng-container-->
+<!--				*ngTemplateOutlet="comp"-->
+<!--		>-->
+<!--		</ng-container>-->
+<!--	</ng-container>-->
+	<ng-container>
+		<form [formGroup]="formGroup">
+			<form-dynamic-section
+					[comp]="comp"
+					*ngFor="let section of form.sections"
+					[section]="section"
+					[formGroupName]="section.propertyName"
+					[formGroup]="formGroup.controls[section.propertyName]"
+			>
+				<ng-content></ng-content>
+			</form-dynamic-section>
+		</form>
+	</ng-container>
+</div>
+
+

@@ -1,0 +1,72 @@
+<div class="dyn-form-section" [class.invalid]="formGroup.pristine && formGroup.invalid">
+	<div class="section-title">{{section.title}}</div>
+	<ng-container *ngIf="formGroup">
+		<form
+				[formGroup]="formGroup">
+			<ng-container
+					*ngFor="let field of section.fields"
+			>
+				<ng-container
+						[ngSwitch]="field.type"
+				>
+					<div
+							*ngSwitchCase="FieldTypes.Text"
+							class="dyn-field"
+							[class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
+					>
+						<label>{{field.label}} <sup class="red-asterisk" *ngIf="field.required">*</sup> </label>
+						<input type="text"
+						       [placeholder]="field.placeholder"
+						       [formControlName]="field.propertyName"
+						       [class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
+						>
+					</div>
+					<div
+							*ngSwitchCase="FieldTypes.Number"
+							class="dyn-field"
+							[class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
+					>
+						<label>{{field.label}}<sup class="red-asterisk" *ngIf="field.required">*</sup></label>
+						
+						<input
+								type="number"
+								[placeholder]="field.placeholder"
+								[formControlName]="field.propertyName">
+					</div>
+					<div
+							*ngSwitchCase="FieldTypes.Color"
+							class="dyn-field"
+							[class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
+					>
+						<label>{{field.label}}<sup class="red-asterisk" *ngIf="field.required">*</sup></label>
+						
+						<input
+								type="color"
+								[placeholder]="field.placeholder"
+								[formControlName]="field.propertyName"
+								[class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
+						
+						>
+					</div>
+					
+					<div
+							*ngSwitchCase="FieldTypes.Custom"
+							class="dyn-field"
+							[class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
+					>
+						<label>{{field.label}}<sup class="red-asterisk" *ngIf="field.required">*</sup></label>
+						<ng-content></ng-content>
+						<ng-container *ngIf="comp">
+							<ng-container
+									*ngTemplateOutlet="comp"
+							>
+							</ng-container>
+						</ng-container>
+					
+					</div>
+				</ng-container>
+			</ng-container>
+			<button [disabled]="formGroup.invalid || formGroup.pristine">Save</button>
+		</form>
+	</ng-container>
+</div>
